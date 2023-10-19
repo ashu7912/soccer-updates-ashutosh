@@ -1,0 +1,37 @@
+<div style="width: 60%;" class="stats-outer">
+
+    <div class="stats-table-container">
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th style="text-align: right;">Home</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th>Away</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fixture of fixturesList; index as i">
+                    <td style="text-align: center;" width="30px">
+                        <img [attr.alt]="fixture.teams.home.name" [src]="fixture.teams.home.logo" height="25px">
+                    </td>
+                    <td style="text-align: right;" width="35%">{{fixture.teams.home.name}}</td>
+                    <td style="text-align: right;" width="30px">{{fixture.goals.home}}</td>
+                    <td style="text-align: center;" width="30px">-</td>
+                    <td width="30px">{{fixture.goals.away}}</td>
+                    <td width="35%">{{fixture.teams.away.name}}</td>
+                    <td style="text-align: center;" width="30px">
+                        <img [attr.alt]="fixture.teams.away.name" [src]="fixture.teams.away.logo" height="25px">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button id="backToScoreCard" name="backToScoreCard" class="btn-primary mt-3" (click)="backToDashboard()">
+        Back
+    </button>
+</div>

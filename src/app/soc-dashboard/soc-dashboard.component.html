@@ -1,0 +1,49 @@
+<div class="stats-outer">
+    <div class="team-tabs">
+        <button
+        *ngFor="let country of countriesList; index as i" 
+        id="{{country.value}}Select" 
+        name="{{country.value}}"
+        type="button"
+        class="tab" 
+        [class.selected]="country.id == selectedCountryObj.id"
+        (click)="getStandings(country)" 
+        >
+        {{country.title}}
+    </button>
+</div>
+    
+    <div class="stats-table-container">
+        <table class="stats-table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Games</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>D</th>
+                    <th>Goal Difference</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let team of selectedLeagueStandings; index as i" (click)="navigateToFixtures(team);">
+                    <td width="30px">{{team.rank}}</td>
+                    <td width="30px">
+                        <img [attr.alt]="team.team.name" [src]="team.team.logo" height="25px">
+                    </td>
+                    <td>{{team.team.name}}</td>
+                    <td width="60px">{{team.all.played}}</td>
+                    <td width="30px">{{team.all.win}}</td>
+                    <td width="30px">{{team.all.lose}}</td>
+                    <td width="30px">{{team.all.draw}}</td>
+                    <td width="120px">{{team.goalsDiff}}</td>
+                    <td width="60px">{{team.points}}</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</div>
